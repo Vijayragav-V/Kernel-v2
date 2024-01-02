@@ -6,8 +6,9 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Extracurriculars from "./pages/Extracurriculars";
 import Updates from "./pages/Updates";
-import Footer from "./components/Footer";
-import Navbar from "./components/Navbar";
+import Resources from "./pages/Resources";
+import Footer from "./components/common/Footer";
+import Navbar from "./components/common/Navbar";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/extracurriculars" element={<Extracurriculars />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/updates" element={<Updates />} />
+        <Route path="/resources" element={<Resources />} />
       </Routes>
       <Footer />
     </>

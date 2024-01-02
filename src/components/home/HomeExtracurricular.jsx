@@ -1,6 +1,6 @@
 import React from "react";
-import Phone from "../assets/phone.png";
-
+import Phone from "../../assets/phone.png";
+import { Link } from "react-router-dom";
 const ExtracurricularSection = () => {
   return (
     <div className="w-full py-16 px-4 text-center md:text-left">
@@ -22,9 +22,11 @@ const ExtracurricularSection = () => {
             updates, and important announcements to ensure you stay
             well-informed throughout your educational journey.
           </p>
-          <button className="bg-gray-900 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-[#4CAF50] hover:text-white hover:scale-105 ease-in-out duration-300">
-            View Resources
-          </button>
+          <Link to="/resources">
+            <button className="bg-gray-900 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-[#4CAF50] hover:text-white hover:scale-105 ease-in-out duration-300">
+              View Resources
+            </button>
+          </Link>
         </div>
       </div>
     </div>
