@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import { AiOutlineClose, AiOutlineMenu } from "react-icons/ai";
 
 const Navbar = () => {
@@ -8,30 +9,38 @@ const Navbar = () => {
     setNavOpen(!isOpen);
   };
 
+  const closeNav = () => {
+    setNavOpen(false);
+  };
+
   const navigationItems = [
     { label: "Home", path: "/" },
+    { label: "About", path: "/about" },
+    { label: "Blogs", path: "/blogs" },
     { label: "Extracurriculars", path: "/extracurriculars" },
     { label: "Updates", path: "/updates" },
     { label: "Resources", path: "/resources" },
   ];
 
   return (
-    <div className="border-b border-gray-300 md:border-0">
+    <div className="border-b border-gray-300 lg:border-0">
       <div className="flex justify-between items-center h-[8vh] max-w-7xl mx-auto px-4 text-[#4CAF50] border-gray-300">
-        <a href="/" className="text-4xl font-bold px-4">
+        <Link to="/" className="text-4xl font-bold px-4">
           nexus
-        </a>
-        <ul className="hidden md:flex justify-center md:text-xl space-x-8">
+        </Link>
+        <ul className="hidden lg:flex justify-center lg:text-xl space-x-8">
           {navigationItems.map((item) => (
             <li
               key={item.label}
               className="hover:scale-110 font-bold transition-transform duration-300"
             >
-              <a href={item.path}>{item.label}</a>
+              <Link to={item.path} onClick={closeNav}>
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>
-        <div className="block md:hidden" onClick={handleNav}>
+        <div className="block lg:hidden" onClick={handleNav}>
           {isOpen ? <AiOutlineClose size={25} /> : <AiOutlineMenu size={25} />}
         </div>
         <ul
@@ -44,7 +53,9 @@ const Navbar = () => {
               key={item.label}
               className="text-center text-lg font-bold py-4 border-b"
             >
-              <a href={item.path}>{item.label}</a>
+              <Link to={item.path} onClick={closeNav}>
+                {item.label}
+              </Link>
             </li>
           ))}
         </ul>

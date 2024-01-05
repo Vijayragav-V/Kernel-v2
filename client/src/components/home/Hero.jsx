@@ -3,7 +3,7 @@ import Typed from "react-typed";
 import { Link } from "react-router-dom";
 import { FaArrowDown } from "react-icons/fa";
 
-const HeroSection = () => {
+const Hero = () => {
   const [visible, setVisible] = useState(true);
 
   const handleVisible = () => {
@@ -78,4 +78,4 @@ const HeroSection = () => {
   );
 };
 
-export default HeroSection;
+export default Hero;

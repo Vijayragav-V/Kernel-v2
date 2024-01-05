@@ -1,7 +1,7 @@
 import React from "react";
 import { Link } from "react-router-dom";
 
-const CardsSection = () => {
+const Features = () => {
   return (
     <div className="w-full py-10 px-4 md:px-8 bg-gray-900 text-white scrollTarget">
       <h1 className="text-center text-[#4CAF50] p-4 mb-6 md:mb-10 text-4xl font-bold underline underline-offset-[14px]">
@@ -73,4 +73,4 @@ const CardsSection = () => {
   );
 };
 
-export default CardsSection;
+export default Features;

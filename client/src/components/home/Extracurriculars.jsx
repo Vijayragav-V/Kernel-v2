@@ -1,7 +1,7 @@
 import React from "react";
 import Phone from "../../assets/phone.png";
 import { Link } from "react-router-dom";
-const ExtracurricularSection = () => {
+const Extracurriculars = () => {
   return (
     <div className="w-full py-16 px-4 text-center md:text-left">
       <div className=" mx-auto max-w-7xl grid md:grid-cols-2">
@@ -33,4 +33,4 @@ const ExtracurricularSection = () => {
   );
 };
 
-export default ExtracurricularSection;
+export default Extracurriculars;

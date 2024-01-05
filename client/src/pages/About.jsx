@@ -5,7 +5,11 @@ import Potential from "../components/about/Potential";
 
 const About = () => {
   return (
-      <><Introduction /><OurMission/><Potential /></>
+    <>
+      <Introduction />
+      <OurMission />
+      <Potential />
+    </>
   );
 };
 

@@ -1,7 +1,8 @@
 import React from "react";
-import Hero from "../components/home/HomeHero";
-import Cards from "../components/home/HomeCards";
-import ExtracurricularSection from "../components/home/HomeExtracurricular";
+import Hero from "../components/home/Hero";
+import Cards from "../components/home/Features";
+import ExtracurricularSection from "../components/home/Extracurriculars";
+import Contact from "../components/home/Contact";
 
 const Home = () => {
   return (
@@ -9,6 +10,7 @@ const Home = () => {
       <Hero />
       <Cards />
       <ExtracurricularSection />
+      <Contact />
     </>
   );
 };
