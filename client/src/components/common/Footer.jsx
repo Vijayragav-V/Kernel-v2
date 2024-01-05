@@ -6,7 +6,7 @@ const Footer = () => {
     <div className="bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
         <div className="flex items-center justify-center space-x-6 ">
-          <h1 className="text-4xl text-[#4CAF50] font-bold pb-2">
+          <h1 className="text-4xl text-[#4CAF50] font-bold pb-2 text-center">
             nexus - social media coming soon
           </h1>
         </div>
@@ -17,7 +17,6 @@ const Footer = () => {
           <Link to="/contact" className="hover:text-gray-500">
             Contact
           </Link>
-          {/* You can replace the "#" with the actual paths */}
           <p className="text-gray-500 hover:cursor-not-allowed">Join Us</p>
           <p className="text-gray-500 hover:cursor-not-allowed">Donate</p>
         </div>

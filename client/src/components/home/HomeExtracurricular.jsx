@@ -5,7 +5,7 @@ const ExtracurricularSection = () => {
   return (
     <div className="w-full py-16 px-4 text-center md:text-left">
       <div className=" mx-auto max-w-7xl grid md:grid-cols-2">
-        <img className="w-[500px] mx-auto my-4" src={Phone} alt="Phone" />
+        <img className="w-[500px] mx-auto my-4 drop-shadow-2xl" src={Phone} alt="Phone" />
         <div className="flex flex-col justify-center">
           <p className="text-[#4CAF50] font-bold text-base lg:text-xl">
             ELEVATE YOUR COLLEGE RESUME
