@@ -23,7 +23,7 @@ const Introduction = () => {
           </p>
           <Link to="/join">
             <button className="bg-[#4CAF50] w-[200px] md:w-[250px] rounded-md font-semibold py-3 hover:scale-105 hover:text-white ease-in-out duration-300">
-            Join Nexus
+              Join Nexus
             </button>
           </Link>
         </div>

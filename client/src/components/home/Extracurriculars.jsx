@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 const Extracurriculars = () => {
   return (
     <div className="w-full py-16 px-4 text-center md:text-left">
-      <div className=" mx-auto max-w-7xl grid md:grid-cols-2">
+      <div className=" mx-auto max-w-4xl grid md:grid-cols-2">
         <img className="w-[500px] mx-auto my-4 drop-shadow-2xl" src={Phone} alt="Phone" />
         <div className="flex flex-col justify-center">
           <p className="text-[#4CAF50] font-bold text-base lg:text-xl">
@@ -23,7 +23,7 @@ const Extracurriculars = () => {
             well-informed throughout your educational journey.
           </p>
           <Link to="/resources">
-            <button className="bg-gray-900 w-[200px] rounded-md font-medium my-6 mx-auto md:mx-0 py-3 text-[#4CAF50] hover:text-white hover:scale-105 ease-in-out duration-300">
+            <button className="bg-gray-900 w-[200px] rounded-md font-semibold my-6 mx-auto md:mx-0 py-3 text-[#4CAF50] hover:text-white hover:scale-105 ease-in-out duration-300">
               View Resources
             </button>
           </Link>

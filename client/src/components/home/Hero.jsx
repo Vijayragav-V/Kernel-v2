@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import Typed from "react-typed";
+import { TypeAnimation } from "react-type-animation";
 import { Link } from "react-router-dom";
 import { FaArrowDown } from "react-icons/fa";
 
@@ -37,15 +37,18 @@ const Hero = () => {
         <div className="flex justify-center items-center mb-6">
           <p className="md:text-5xl sm:text-3xl text-xl font-bold py-4">
             Easily find{" "}
-            <Typed
-              strings={[
+            <TypeAnimation
+              sequence={[
                 "extracurriculars",
+                3000,
                 "volunteer opportunities",
+                3000,
                 "school updates",
+                3000,
               ]}
-              typeSpeed={120}
-              backSpeed={80}
-              loop
+              wrapper="span"
+              speed={10}
+              repeat={Infinity}
             />
             at Scioto.
           </p>

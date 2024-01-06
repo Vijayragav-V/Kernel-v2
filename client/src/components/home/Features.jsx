@@ -22,7 +22,7 @@ const Features = () => {
               experience.
             </p>
             <Link to="/extracurriculars">
-              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-medium mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
+              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-semibold mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
                 Explore Extracurriculars
               </button>
             </Link>
@@ -42,7 +42,7 @@ const Features = () => {
               access and personalized recommendations.
             </p>
             <Link to="/extracurriculars">
-              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-medium mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
+              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-semibold mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
                 Try It Now
               </button>
             </Link>
@@ -62,7 +62,7 @@ const Features = () => {
               information.
             </p>
             <Link to="updates">
-              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-medium mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
+              <button className="bg-[#4CAF50] w-full lg:w-[200px] rounded-md font-semibold mt-4 md:mt-6 mx-auto py-2 md:py-3 text-gray-900 hover:text-white ease-in-out duration-300">
                 View School Updates
               </button>
             </Link>

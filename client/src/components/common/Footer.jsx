@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+// import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -10,6 +10,7 @@ const Footer = () => {
             nexus - social media coming soon
           </h1>
         </div>
+        {/*
         <div className="flex flex-row justify-center text-center py-4 font-semibold space-x-6">
           <Link to="/about" className="hover:text-gray-500">
             About Us
@@ -20,6 +21,7 @@ const Footer = () => {
           <p className="text-gray-500 hover:cursor-not-allowed">Join Us</p>
           <p className="text-gray-500 hover:cursor-not-allowed">Donate</p>
         </div>
+        */}
         <div className="text-center pt-2 text-xl font-semibold">
           <h1>
             Built with ❤️ by{" "}
