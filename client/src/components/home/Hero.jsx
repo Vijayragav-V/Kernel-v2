@@ -28,8 +28,26 @@ const Hero = () => {
   }, []);
 
   return (
-    <div className="text-gray-900 h-[92vh] flex items-center justify-center">
-      <div className="max-w-7xl -mt-[10vh] mx-auto text-center">
+    <div className="relative overflow-hidden text-gray-900 h-[92vh] flex items-center justify-center">
+      <div className="absolute inset-0 z-[-1]">
+        <div className="absolute left-[calc(50%-11rem)] top-[-40%] transform-gpu overflow-hidden blur-3xl sm:left-[calc(50%-30rem)] sm:-top-80">
+          <div className="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[30deg] bg-gradient-to-tr from-[#56a75c] to-[#c8dfca] opacity-60 sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
+        </div>
+        <div className="absolute left-[calc(50%+3rem)] top-[calc(100%-13rem)] transform-gpu overflow-hidden blur-3xl sm:left-[calc(50%+36rem)] sm:top-[calc(100%-30rem)]">
+          <div className="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#5ca562] to-[#c8dfca] opacity-60 sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
+        </div>
+        <div className="absolute left-[calc(50%+10rem)] top-[calc(50%-8rem)] transform-gpu overflow-hidden blur-3xl sm:left-[calc(50%+20rem)] sm:top-[calc(50%-20rem)]">
+          <div className="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 bg-gradient-to-tr from-[#74ca7b] to-[#c8dfca] opacity-60 sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
+        </div>
+        <div className="absolute left-[calc(50%-8rem)] top-[calc(75%-6rem)] transform-gpu overflow-hidden blur-3xl sm:left-[calc(50%-15rem)] sm:top-[calc(75%-15rem)]">
+          <div className="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[15deg] bg-gradient-to-tr from-[#a5ffad] to-[#c8dfca] opacity-60 sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
+        </div>
+        <div className="absolute left-2 top-[calc(75%-6rem)] transform-gpu overflow-hidden blur-3xl sm:left-1 sm:top-[calc(75%-15rem)]">
+          <div className="relative aspect-[1155/678] w-[36.125rem] -translate-x-1/2 rotate-[15deg] bg-gradient-to-tr from-[#a5ffad] to-[#c8dfca] opacity-60 sm:w-[72.1875rem]" style={{ clipPath: "polygon(74.1% 44.1%, 100% 61.6%, 97.5% 26.9%, 85.5% 0.1%, 80.7% 2%, 72.5% 32.5%, 60.2% 62.4%, 52.4% 68.1%, 47.5% 58.3%, 45.2% 34.5%, 27.5% 76.7%, 0.1% 64.9%, 17.9% 100%, 27.6% 76.8%, 76.1% 97.7%, 74.1% 44.1%)" }}></div>
+        </div>
+      </div>
+
+      <div className="max-w-7xl -mt-[10vh] mx-auto text-center relative z-10">
         <p className="text-[#4CAF50] font-bold p-2">BRAND NEW</p>
         <h1 className="md:text-6xl sm:text-4xl text-3xl font-bold mb-4">
           Nexus - Scioto EC Finder
@@ -68,15 +86,16 @@ const Hero = () => {
             </button>
           </Link>
         </div>
-        <div
-          className={`flex justify-center absolute bottom-12 lg:bottom-20 left-1/2 transform -translate-x-1/2 p-2 rounded-3xl bg-gray-900 hover:cursor-pointer ease-in-out duration-300 ${
+      </div>
+      <div
+          className={`flex justify-center absolute bottom-6 lg:bottom-14 left-1/2 transform -translate-x-1/2 p-2 rounded-3xl bg-gray-900 hover:cursor-pointer ease-in-out duration-300 ${
             visible ? "opacity-100 visible" : "opacity-0 invisible"
           }`}
+          style={{ bottom: "10%" }}
           onClick={scrollDown}
         >
           <FaArrowDown color="white" />
         </div>
-      </div>
     </div>
   );
 };
