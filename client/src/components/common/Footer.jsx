@@ -7,7 +7,7 @@ const Footer = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
         <div className="flex items-center justify-center space-x-6 ">
           <h1 className="text-4xl text-[#4CAF50] font-bold pb-2 text-center">
-            nexus - social media coming soon
+            Nexus - social media coming soon
           </h1>
         </div>
         {/*
