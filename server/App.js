@@ -1,6 +1,7 @@
 const express = require('express');
 const cors = require('cors');
 const mongooseConnection = require('./src/db/database');
+const routes = require('./src/routes');
 
 require('dotenv').config();
 
@@ -11,6 +12,8 @@ const PORT = process.env.PORT || 3000;
 app.use(cors());
 app.use(express.json());
 
+// Routes
+app.use('/api', routes);
 
 // Error handling middleware
 app.use((err, req, res, next) => {
