@@ -8,7 +8,7 @@ mongoose.connect(databaseURL);
 const dbConnection = mongoose.connection;
 
 dbConnection.on("connected", () => {
-  console.log("Connected to MongoDB");
+  console.log("Connected to MongoDB.");
 });
 
 dbConnection.on("error", (error) => {
@@ -16,12 +16,12 @@ dbConnection.on("error", (error) => {
 });
 
 dbConnection.on("disconnected", () => {
-  console.log("Disconnected from MongoDB");
+  console.log("Disconnected from MongoDB.");
 });
 
 process.on("SIGINT", () => {
   dbConnection.close(() => {
-    console.log("MongoDB connection closed due to application termination");
+    console.log("MongoDB connection closed due to application termination.");
     process.exitCode = 0;
   });
 });

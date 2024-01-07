@@ -1,12 +1,12 @@
 const express = require("express");
-const EcController = require("../controllers/extracurricular.controller");
+const ExtracurricularController = require("../controllers/extracurricular.controller");
 
 const router = express.Router();
 
-const ecController = new EcController();
+const extracurricularController = new ExtracurricularController();
 
-router.get("/", ecController.fetchAll);
+router.get("/", extracurricularController.fetchAll);
 
-router.get("/:title", ecController.fetchByTitle);
+router.get("/:title", extracurricularController.fetchByTitle);
 
 module.exports = router;

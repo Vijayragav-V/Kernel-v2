@@ -1,0 +1,7 @@
+To Do:
+
+1. Make an API endpoint for blogs
+2. Make extracurriculars page
+3. Make logic to access updates from Schoology API
+
+Awesome sauce 😛

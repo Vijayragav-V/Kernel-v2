@@ -1,38 +1,42 @@
 const Extracurricular = require("../models/extracurricular.model");
 
-const errorMessage = (res, error) => {
-    console.error(error);
-    return res.status(500).send({ message: "Server Error" });
+const handleServerError = (res, error) => {
+  console.error(error);
+  return res.status(500).send({ message: "Server Error" });
 };
 
 class ExtracurricularController {
-    fetchAll = async (req, res) => {
-        try {
-            const query = req.query;
-            const extracurriculars = await Extracurricular.find(query);
+  fetchAll = async (res) => {
+    try {
+      const extracurriculars = await Extracurricular.find();
 
-            return res.status(200).send(extracurriculars);
-        } catch (error) {
-            handleServerError(res, error);
-        }
-    };
+      return res.status(200).send(extracurriculars);
+    } catch (error) {
+      handleServerError(res, error);
+    }
+  };
 
-    fetchByTitle = async (req, res) => {
-        const { ecTitle } = req.params;
+  fetchByTitle = async (req, res) => {
+    const { title } = req.params;
 
-        try {
-            const ec = await Extracurricular.findOne({ title: ecTitle });
+    try {
+      const extracurricular = await Extracurricular.findOne({
+        title: title,
+      });
 
-            if (!ec) {
-                return res.status(404).send({ message: "There are no opportunities by this title. Try again, using a different name or browse our opportunities!" });
-            }
+      if (!extracurricular) {
+        return res
+          .status(404)
+          .send({
+            message: "404 - The requested extracurricular was not found",
+          });
+      }
 
-            return res.status(200).send(ec);
-        } catch (error) {
-            handleServerError(res, error);
-        }
-    };
-
+      return res.status(200).send(extracurricular);
+    } catch (error) {
+      handleServerError(res, error);
+    }
+  };
 }
 
 module.exports = ExtracurricularController;
