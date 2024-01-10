@@ -6,13 +6,11 @@ const handleServerError = (res, error) => {
 };
 
 class ExtracurricularController {
-  // Use standard function syntax to avoid issues with class properties
   async fetchAll(req, res) {
     try {
       const extracurriculars = await Extracurricular.find();
       return res.status(200).send(extracurriculars);
     } catch (error) {
-      // Call handleServerError with the correct res object
       handleServerError(res, error);
     }
   }
@@ -33,7 +31,15 @@ class ExtracurricularController {
 
       return res.status(200).send(extracurricular);
     } catch (error) {
-      // Call handleServerError with the correct res object
+      handleServerError(res, error);
+    }
+  }
+
+  async getCount(req, res) {
+    try {
+      const extracurricularCount = await Extracurricular.countDocuments();
+      return res.status(200).send({ count: extracurricularCount });
+    } catch (error) {
       handleServerError(res, error);
     }
   }

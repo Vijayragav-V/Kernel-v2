@@ -7,7 +7,6 @@ const api = axios.create({
 const fetchExtracurriculars = async (setExtracurricularData) => {
   try {
     const response = await api.get('/extracurriculars/');
-    console.log('API Response:', response);
     setExtracurricularData(response.data);
     return response.data; // Return the data
   } catch (error) {
@@ -19,7 +18,7 @@ const fetchExtracurriculars = async (setExtracurricularData) => {
 
 const fetchExtracurricularByTitle = async (extracurricular, setExtracurricularData) => {
   try {
-    const response = await api.get(`/extracurriculars/${extracurricular}`);
+    const response = await api.get(`/extracurriculars/extracurricular/${extracurricular}`);
     setExtracurricularData(response.data);
   } catch (error) {
     console.error(`Error fetching data for extracurricular "${extracurricular}":`, error.response?.data || error.message);
@@ -27,4 +26,13 @@ const fetchExtracurricularByTitle = async (extracurricular, setExtracurricularDa
   }
 };
 
-export { fetchExtracurriculars, fetchExtracurricularByTitle };
+const fetchExtracurricularCount = async (setCountData) => {
+  try {
+    const response = await api.get("/extracurriculars/count/");
+    setCountData(response.data);
+  } catch (error) {
+    console.error("Error fetching extracurricular count:", error.response?.data || error.message)
+  }
+}
+
+export { fetchExtracurriculars, fetchExtracurricularByTitle, fetchExtracurricularCount };

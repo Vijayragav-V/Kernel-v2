@@ -7,6 +7,8 @@ const extracurricularController = new ExtracurricularController();
 
 router.get("/", extracurricularController.fetchAll);
 
-router.get("/:title", extracurricularController.fetchByTitle);
+router.get("/extracurricular/:title", extracurricularController.fetchByTitle);
+
+router.get("/count", extracurricularController.getCount);
 
 module.exports = router;
