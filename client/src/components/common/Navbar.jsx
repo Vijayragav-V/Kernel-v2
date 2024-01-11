@@ -27,7 +27,13 @@ const Navbar = () => {
     <div className="shadow-xl fixed w-full top-0 backdrop-filter backdrop-blur-2xl bg-opacity-50 z-50">
       <div className="flex justify-between items-center h-[8vh] max-w-7xl mx-auto px-4 text-[#4CAF50]">
         <Link to="/" className="flex items-center text-4xl font-bold px-4">
-          <img src={logo} alt="Logo" width="40" height="40" className="mr-3 mt-2" />
+          <img
+            src={logo}
+            alt="Logo"
+            width="40"
+            height="40"
+            className="mr-3 mt-2"
+          />
           Nexus
         </Link>
         <ul className="hidden lg:flex justify-center lg:text-xl space-x-8">
@@ -51,10 +57,7 @@ const Navbar = () => {
           }`}
         >
           {navigationItems.map((item) => (
-            <li
-              key={item.label}
-              className="text-center text-lg font-bold py-4"
-            >
+            <li key={item.label} className="text-center text-lg font-bold py-4">
               <Link to={item.path} onClick={closeNav}>
                 {item.label}
               </Link>

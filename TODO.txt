@@ -1,7 +1,8 @@
-To Do:
+TO DO: 
 
-1. Make an API endpoint for blogs
-2. Make extracurriculars page
-3. Make logic to access updates from Schoology API
+Make the database
+Make the loading look better
+Start blogs
+Finish the database so we can actually post the website
 
-Awesome sauce 😛
+Lets go! Datteyabo!
