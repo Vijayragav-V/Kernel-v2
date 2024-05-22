@@ -1,13 +1,21 @@
 import React from "react";
+import logo from "../../assets/logo.png";
 // import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
     <div className="bg-gray-900 py-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
-        <div className="flex items-center justify-center space-x-6 ">
-          <h1 className="text-4xl text-[#4CAF50] font-bold pb-2 text-center">
-            Nexus - social media coming soon
+        <div className="flex flex-col items-center justify-center space-x-6 ">
+          <img
+            src={logo}
+            alt="Logo"
+            width="50"
+            height="50"
+            className="mr-2 mt-2 mb-3"
+          />
+          <h1 className="text-4xl text-[#85b0ff] font-bold pb-2 text-center">
+            Kernel
           </h1>
         </div>
         {/*
@@ -25,15 +33,6 @@ const Footer = () => {
         <div className="text-center pt-2 text-xl font-semibold">
           <h1>
             Built with ❤️ by{" "}
-            <a
-              target="_blank"
-              rel="noreferrer"
-              href="https://github.com/mohamed-khettab"
-              className="font-bold hover:text-[#4CAF50]"
-            >
-              Mohamed K.
-            </a>{" "}
-            and{" "}
             <a
               target="_blank"
               rel="noreferrer"

@@ -1,15 +1,11 @@
 import React from "react";
 import Introduction from "../components/about/Introduction";
-import OurMission from "../components/about/OurMission";
-import Potential from "../components/about/Potential";
 
 const About = () => {
   return (
-    <div className="mt-16">
+    <div className="bg-[#1f1f1f]">
       <>
         <Introduction />
-        <OurMission />
-        <Potential />
       </>
     </div>
   );
