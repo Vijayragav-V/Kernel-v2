@@ -1,36 +1,37 @@
 import React, { useEffect, useState } from 'react';
-import { FaRegBookmark, FaBookmark } from "react-icons/fa6";
+import { FaRegBookmark, FaBookmark } from "react-icons/fa";
 
-const BookmarkButton = ({ extracurricularID }) => {
+const BookmarkButton = ({ title }) => {
   const [isBookmarked, setIsBookmarked] = useState(false);
 
   useEffect(() => {
     const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-    setIsBookmarked(storedBookmarks.includes(extracurricularID));
-  }, [extracurricularID]);
+    setIsBookmarked(storedBookmarks.includes(title));
+  }, [title]);
 
   const handleBookmarkToggle = () => {
-    setIsBookmarked((prev) => {
-      const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const storedBookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    let updatedBookmarks;
 
-      const updatedBookmarks = prev
-        ? storedBookmarks.filter((id) => id !== extracurricularID)
-        : [...storedBookmarks, extracurricularID];
+    if (isBookmarked) {
+      // Remove the bookmark
+      updatedBookmarks = storedBookmarks.filter((item) => item !== title);
+    } else {
+      // Add the bookmark
+      updatedBookmarks = [...storedBookmarks, title];
+    }
 
-      localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
-
-
-      return !prev;
-    });
+    localStorage.setItem('bookmarks', JSON.stringify(updatedBookmarks));
+    setIsBookmarked(!isBookmarked);
   };
 
   return (
     <button onClick={handleBookmarkToggle} className={`bookmark-button ${isBookmarked ? 'bookmarked' : ''}`}>
-      <div className="flex w-[140%] h-[20%] bg-white text-[#4CAF50] justify-center rounded-full border-4 border-[#8bb48d] hover:border-[#4CAF50] ease-in-out duration-300 p-2 hover:cursor-pointer">
+      <div className="flex w-[140%] h-[20%] bg-white text-[#6e90cf] justify-center rounded-full border-4 border-[#6e90cf] hover:border-[#6d97e4] ease-in-out duration-300 p-2 hover:cursor-pointer">
         {isBookmarked ? (
-          <FaBookmark color="#4CAF50" style={{ fontSize: "24px" }} />
+          <FaBookmark color="#6e90cf" style={{ fontSize: "24px" }} />
         ) : (
-          <FaRegBookmark color="#4CAF50" style={{ fontSize: "24px" }} />
+          <FaRegBookmark color="#6e90cf" style={{ fontSize: "24px" }} />
         )}
       </div>
     </button>

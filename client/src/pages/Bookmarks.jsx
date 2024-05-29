@@ -1,36 +1,25 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect, useState } from "react";
+import {fetchMovieById } from "../utils/fetchMovieData";
+import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import { TbSettingsStar } from 'react-icons/tb';
 import { FaBookmark } from 'react-icons/fa6';
-import { fetchMovieByTitle } from '../../utils/fetchMovieData';
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import BookmarkButton from './BookmarkButton';
-import SearchBar from './SearchBar'; // Assuming this path is correct
-import YearRangeSlider from './YearRangeSlider';
-
-const Display = () => {
-  const [searchQuery, setSearchQuery] = useState('Batman');
-  const [movieData, setMovieData] = useState(null);
-  const [exactTitleSearch, setExactTitleSearch] = useState(false); // State to track search type
+import BookmarkButton from '../components/movies/BookmarkButton';
+import SearchBar from "../components/movies/SearchBar"; 
+const Bookmarks = () => {
+  const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
 
   useEffect(() => {
-    const getData = async () => {
-      const data = await fetchMovieByTitle(searchQuery, 1, exactTitleSearch); // Pass exactTitleSearch
-      if (data) {
-        setMovieData(data);
-      }
+    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    
+    const fetchBookmarkedMovies = async () => {
+      const movies = await Promise.all(bookmarks.map(id => fetchMovieById(id)));
+      setBookmarkedMovies(movies);
     };
 
-    getData();
-  }, [searchQuery, exactTitleSearch]); // Include exactTitleSearch in dependency array
-
-  const handleSearch = (query) => {
-    setSearchQuery(query);
-  };
-
-  const handleSearchToggle = () => {
-    setExactTitleSearch(prevState => !prevState); // Toggle exactTitleSearch state
-  };
-
+    fetchBookmarkedMovies();
+    console.log(bookmarkedMovies)
+  }, []);
+  
   const formatReleaseDate = (releaseDate) => {
     if (releaseDate && releaseDate.month && releaseDate.day && releaseDate.year) {
       return `${releaseDate.month}/${releaseDate.day}/${releaseDate.year}`;
@@ -48,60 +37,57 @@ const Display = () => {
           </div>
           <div className="flex flex-col">
             <button
-              onClick={handleSearchToggle}
               className="bg-white w-[200px] mt-8 font-semibold mx-auto md:mx-0 py-3 border-8 border-[#6d97e4] text-[#6d97e4] hover:text-[#385180] hover:border-[#385180] ease-in-out duration-300"
             >
-              {exactTitleSearch ? 'Keyword Search' : 'Exact Title Search'}
+              template
             </button>
           </div>
         </div>
       </div>
       <div className="col-span-3 py-6 lg:py-0">
         <div className="flex gap-4 mb-4">
-          <SearchBar onSearch={handleSearch} />
-          <Link to="/movies/bookmarks" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#6e90cf] items-center justify-center h-20 rounded-xl border-4 border-gray-900 hover:border-[#6d97e4] ease-in-out duration-300">
+          <SearchBar />
+          <Link to="/movies" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#6e90cf] items-center justify-center h-20 rounded-xl border-4 border-gray-900 hover:border-[#6d97e4] ease-in-out duration-300">
               <div>
                 <FaBookmark style={{ fontSize: '24px' }} />
               </div>
           </Link>
-          
-          
         </div>
         <div className="flex flex-col">
-          {movieData && movieData.results ? (
-            movieData.results.map((movie) => (
+          {bookmarkedMovies.length > 0 ? (
+            bookmarkedMovies.map((movie) => (
               <div
                 key={movie.id}
                 className="grid grid-cols-[0.5fr,2fr,1fr] shadow-[0_0_20px_-7px] shadow-black text-gray-900 justify-between rounded-lg my-3 relative overflow-hidden w-full"
               >
                 <div className="p-4 items-center">
                   <img
-                    src={movie.primaryImage?.url}
+                    src={movie.results.primaryImage?.url}
                     alt="Movie Poster"
                     className="w-full h-auto border-4 border-[#6e90cf]"
                   />
                 </div>
                 <div className="p-4 items-start">
                   <h1 className="text-3xl md:text-5xl w-[100%] my-3 mb-4">
-                    {movie.titleText.text}
+                    {movie.results.titleText.text}
                   </h1>
                   <p className="italic text-md">
-                    {movie.primaryImage?.caption?.plainText}
+                    {movie.results.primaryImage?.caption?.plainText}
                   </p>
                   <p className="text-2xl md:text-xl font-thin my-2">
-                    Release Date: {formatReleaseDate(movie.releaseDate)}
+                    Release Date: {formatReleaseDate(movie.results.releaseDate)}
                   </p>
                   <a
-                    href={`https://www.imdb.com/title/${movie.id}/`}
+                    href={`https://www.imdb.com/title/${movie.results.id}/`}
                     className="text-blue-500 hover:text-blue-700 underline text-lg"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visit "{movie.titleText.text}" on IMDb
+                    Visit "{movie.results.titleText.text}" on IMDb
                   </a>
                 </div>
                 <div className="text-[#6e90cf] items-baseline">
-                  <BookmarkButton title={movie.id} />
+                  <BookmarkButton title={movie.results.id} />
                 </div>
               </div>
             ))
@@ -114,4 +100,4 @@ const Display = () => {
   );
 };
 
-export default Display;
+export default Bookmarks;

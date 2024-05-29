@@ -5,11 +5,11 @@ import SearchBar from "../components/movies/SearchBar"; // Assuming this path is
 
 const Movies = () => {
   const [movieData, setMovieData] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('The Batman');
+  const [searchQuery, setSearchQuery] = useState('Batman');
 
   useEffect(() => {
     const getData = async () => {
-      const data = await fetchMovieByTitle(searchQuery);
+      const data = await fetchMovieByTitle(searchQuery, 1);
       if (data) {
         console.log(data);
         setMovieData(data);
