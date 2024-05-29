@@ -32,21 +32,22 @@ const fetchMovieByTitle = async (title, page = 1, exactTitleSearch = false) => {
   }
 };
 
-const fetchMovieById = async (id) => {
-  const options = {
+const fetchMovieById = async (imdbId) => {
+  const stuff = {
     method: 'GET',
-    url: `https://moviesdatabase.p.rapidapi.com/titles/${encodeURIComponent(id)}`,
+    url: `https://moviesdatabase.p.rapidapi.com/titles/${imdbId}`,
     headers: {
       'X-RapidAPI-Key': 'e69dff0f48msh64e2fe9daaae680p118537jsn1db170a008a5',
       'X-RapidAPI-Host': 'moviesdatabase.p.rapidapi.com'
     }
   };
-  
+
   try {
-    const response = await axios.request(options);
-    console.log(response.data);
+    const returns = await axios.request(stuff);
+    return returns.data.results;
   } catch (error) {
     console.error(error);
+    return null;
   }
 };
 

@@ -8,7 +8,7 @@ import SearchBar from './SearchBar'; // Assuming this path is correct
 import YearRangeSlider from './YearRangeSlider';
 
 const Display = () => {
-  const [searchQuery, setSearchQuery] = useState('Batman');
+  const [searchQuery, setSearchQuery] = useState('batman');
   const [movieData, setMovieData] = useState(null);
   const [exactTitleSearch, setExactTitleSearch] = useState(false); // State to track search type
 

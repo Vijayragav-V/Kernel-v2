@@ -1,28 +1,43 @@
-import React, { useEffect, useState } from "react";
-import {fetchMovieById } from "../utils/fetchMovieData";
-import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
-import { TbSettingsStar } from 'react-icons/tb';
-import { FaBookmark } from 'react-icons/fa6';
-import BookmarkButton from '../components/movies/BookmarkButton';
-import SearchBar from "../components/movies/SearchBar"; 
+// MovieComponent.js
+import React, { useEffect, useState } from 'react';
+import { fetchMovieById } from '../utils/fetchMovieData';
 
-const Bookmarks = () => {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+const Blogs = () => {
+  const [movies, setMovies] = useState([]);
 
   useEffect(() => {
-    const fetchBookmarkedMovies = async () => {
-      const movies =  fetchMovieById();
-      setBookmarkedMovies(movies);
+    const imdbIds = ['tt0468569', 'tt0133093', 'tt0111161']; // Example IMDb IDs
+    const fetchMovies = async () => {
+      const movieDataPromises = imdbIds.map(async (imdbId) => {
+        const movieData = await fetchMovieById(imdbId);
+        return {
+          title: movieData.titleText.text,
+          releaseYear: movieData.releaseYear.year,
+          caption: movieData.primaryImage.caption.plainText
+        };
+      });
+
+      const movies = await Promise.all(movieDataPromises);
+      setMovies(movies);
     };
 
-    fetchBookmarkedMovies();
+    fetchMovies();
   }, []);
-  
+
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-4 mt-[10vh] mb-[2vh] max-w-[90%] mx-auto font-serif">
-      <h1>{bookmarkedMovies.results.titleText.text}</h1>
+    <div>
+      <h1>List of Movies</h1>
+      <ul>
+        {movies.map((movie, index) => (
+          <li key={index}>
+            <h2>{movie.title}</h2>
+            <p>Release Year: {movie.releaseYear}</p>
+            <p>Caption: {movie.caption}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
 };
 
-export default Bookmarks;
+export default Blogs;

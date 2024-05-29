@@ -6,20 +6,25 @@ import { FaBookmark } from 'react-icons/fa6';
 import BookmarkButton from '../components/movies/BookmarkButton';
 import SearchBar from "../components/movies/SearchBar"; 
 const Bookmarks = () => {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState([]);
+  const [bookmarkedMovies, setBookmarkedMovies] = useState(null);
 
   useEffect(() => {
     const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
-    
+
     const fetchBookmarkedMovies = async () => {
-      const movies = await Promise.all(bookmarks.map(id => fetchMovieById(id)));
+      const movieDataPromises = bookmarks.map(async (bookmark) => {
+        const movieData = await fetchMovieById(bookmark);
+        return movieData;
+      });
+
+      const movies = await Promise.all(movieDataPromises);
       setBookmarkedMovies(movies);
     };
 
     fetchBookmarkedMovies();
-    console.log(bookmarkedMovies)
   }, []);
-  
+
+
   const formatReleaseDate = (releaseDate) => {
     if (releaseDate && releaseDate.month && releaseDate.day && releaseDate.year) {
       return `${releaseDate.month}/${releaseDate.day}/${releaseDate.year}`;
@@ -54,7 +59,7 @@ const Bookmarks = () => {
           </Link>
         </div>
         <div className="flex flex-col">
-          {bookmarkedMovies.length > 0 ? (
+          {bookmarkedMovies ? (
             bookmarkedMovies.map((movie) => (
               <div
                 key={movie.id}
@@ -62,32 +67,32 @@ const Bookmarks = () => {
               >
                 <div className="p-4 items-center">
                   <img
-                    src={movie.results.primaryImage?.url}
+                    src={movie.primaryImage?.url}
                     alt="Movie Poster"
                     className="w-full h-auto border-4 border-[#6e90cf]"
                   />
                 </div>
                 <div className="p-4 items-start">
                   <h1 className="text-3xl md:text-5xl w-[100%] my-3 mb-4">
-                    {movie.results.titleText.text}
+                    {movie.titleText.text}
                   </h1>
                   <p className="italic text-md">
-                    {movie.results.primaryImage?.caption?.plainText}
+                    {movie.primaryImage?.caption?.plainText}
                   </p>
                   <p className="text-2xl md:text-xl font-thin my-2">
-                    Release Date: {formatReleaseDate(movie.results.releaseDate)}
+                    Release Date: {formatReleaseDate(movie.releaseDate)}
                   </p>
                   <a
-                    href={`https://www.imdb.com/title/${movie.results.id}/`}
+                    href={`https://www.imdb.com/title/${movie.id}/`}
                     className="text-blue-500 hover:text-blue-700 underline text-lg"
                     target="_blank"
                     rel="noopener noreferrer"
                   >
-                    Visit "{movie.results.titleText.text}" on IMDb
+                    Visit "{movie.titleText.text}" on IMDb
                   </a>
                 </div>
                 <div className="text-[#6e90cf] items-baseline">
-                  <BookmarkButton title={movie.results.id} />
+                  <BookmarkButton title={movie.id} />
                 </div>
               </div>
             ))

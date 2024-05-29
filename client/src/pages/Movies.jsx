@@ -5,7 +5,7 @@ import SearchBar from "../components/movies/SearchBar"; // Assuming this path is
 
 const Movies = () => {
   const [movieData, setMovieData] = useState(null);
-  const [searchQuery, setSearchQuery] = useState('Batman');
+  const [searchQuery, setSearchQuery] = useState('batman');
 
   useEffect(() => {
     const getData = async () => {
@@ -27,6 +27,7 @@ const Movies = () => {
     <div>
       <SearchBar onSearch={handleSearch} />
       {movieData ? <Display movieData={movieData} /> : <p>Loading...</p>}
+      
     </div>
   );
 };
