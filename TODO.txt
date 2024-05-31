@@ -1,8 +1,0 @@
-TO DO: 
-
-Make the database
-Make the loading look better
-Start blogs
-Finish the database so we can actually post the website
-
-Lets go! Datteyabo!
