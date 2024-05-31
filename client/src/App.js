@@ -5,9 +5,10 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Movies from "./pages/Movies";
 import Bookmarks from "./pages/Bookmarks";
-import Blogs from "./pages/Blogs";
+import Watched from "./pages/Watched";
 import Footer from "./components/common/Footer";
 import Navbar from "./components/common/Navbar";
+
 
 function App() {
   return (
@@ -18,7 +19,7 @@ function App() {
         <Route path="/about" element={<About />} />
         <Route path="/movies" element={<Movies />} />
         <Route path="/movies/bookmarks" element={<Bookmarks/>} />
-        <Route path="/blogs" element={<Blogs />} />
+        <Route path="/movies/watched" element={<Watched/>} />
       </Routes>
       <Footer />
     </>

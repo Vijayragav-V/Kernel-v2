@@ -87,36 +87,35 @@ const Hero = () => {
             {"'"}
             <TypeAnimation
               sequence={[
-                "Romantic comedy",
+                "The Godfather",
                 3000,
-                "Thriller",
+                "Batman",
                 3000,
-                "Murder mystery",
+                "Shawshank Redemption",
                 3000,
-                "Comedy",
+                "Schindler's List",
                 3000,
-                "Holiday",
+                "Pulp Fiction",
                 3000,
-                "Horror",
+                "Fight Club",
                 3000,
-                "Action",
+                "Split",
                 3000,
-                "Science fiction",
+                "Harry Potter and the Prisoner of Azkaban",
                 3000,
-                "Fantasy",
+                "Lord of the Rings",
                 3000,
-                "Wild western",
+                "Matrix",
                 3000,
-                "Historical",
+                "Goodfellas",
                 3000,
-                "Animated",
+                "Puss and Boots",
                 3000,
               ]}
               wrapper="span"
               speed={10}
               repeat={Infinity}
-            />
-            movies for me.'
+            />'
           </p>
         </div>
         <p className="md:text-xl text-sm font-bold text-gray-600 mb-8">

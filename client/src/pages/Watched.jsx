@@ -1,27 +1,28 @@
 import React, { useEffect, useState } from "react";
 import {fetchMovieById } from "../utils/fetchMovieData";
 import { BrowserRouter as Router, Link } from 'react-router-dom';
-import { FaHome } from "react-icons/fa";
 import BookmarkButton from '../components/movies/BookmarkButton';
 import WatchedCheckButton from "../components/movies/WatchedCheckButton";
+import { FaHome } from "react-icons/fa";
 
-const Bookmarks = () => {
-  const [bookmarkedMovies, setBookmarkedMovies] = useState(null);
+
+const Watched = () => {
+  const [watchedMovies, setWatchedMovies] = useState(null);
 
   useEffect(() => {
-    const bookmarks = JSON.parse(localStorage.getItem('bookmarks')) || [];
+    const watched = JSON.parse(localStorage.getItem('watched')) || [];
 
-    const fetchBookmarkedMovies = async () => {
-      const movieDataPromises = bookmarks.map(async (bookmark) => {
-        const movieData = await fetchMovieById(bookmark);
+    const fetchWatchedMovies = async () => {
+      const movieDataPromises = watched.map(async (watch) => {
+        const movieData = await fetchMovieById(watch);
         return movieData;
       });
 
       const movies = await Promise.all(movieDataPromises);
-      setBookmarkedMovies(movies);
+      setWatchedMovies(movies);
     };
 
-    fetchBookmarkedMovies();
+    fetchWatchedMovies();
   }, []);
 
 
@@ -34,10 +35,9 @@ const Bookmarks = () => {
 
   return (
     <div className="grid grid-cols-1 md:gap-4 mt-[10vh] mb-[2vh] max-w-[90%] mx-auto font-serif">
-      
       <div className="col-span-3 py-6 lg:py-0">
-        <div className="flex justify-between">
-          <h1 className=" text-7xl font-extrabold">Bookmarks</h1>
+      <div className="flex justify-between">
+          <h1 className=" text-7xl font-extrabold">Watched Movies</h1>
           <div className="flex gap-4 mb-4">
             <Link to="/movies" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#ffffff] items-center justify-center h-20 rounded-xl border-4 p-10 border-gray-900 hover:border-[#ffffff] ease-in-out duration-300">
                 <div>
@@ -47,8 +47,8 @@ const Bookmarks = () => {
           </div>
         </div>  
         <div className="flex flex-col">
-          {bookmarkedMovies ? (
-            bookmarkedMovies.map((movie) => (
+          {watchedMovies ? (
+            watchedMovies.map((movie) => (
               <div
                 key={movie.id}
                 className="grid grid-cols-[0.5fr,2fr,1fr] shadow-[0_0_20px_-7px] shadow-black text-gray-900 justify-between rounded-lg my-3 relative overflow-hidden w-full"
@@ -99,4 +99,4 @@ const Bookmarks = () => {
   );
 };
 
-export default Bookmarks;
+export default Watched;

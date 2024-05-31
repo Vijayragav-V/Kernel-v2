@@ -5,7 +5,10 @@ import { fetchMovieByTitle } from '../../utils/fetchMovieData';
 import { BrowserRouter as Router, Route, Switch, Link } from 'react-router-dom';
 import BookmarkButton from './BookmarkButton';
 import SearchBar from './SearchBar'; // Assuming this path is correct
-import YearRangeSlider from './YearRangeSlider';
+import SearchTypeToggle from './SearchTypeToggle';
+import WatchedCheckButton from './WatchedCheckButton';
+import { ImCheckmark } from "react-icons/im";
+
 
 const Display = () => {
   const [searchQuery, setSearchQuery] = useState('batman');
@@ -40,32 +43,31 @@ const Display = () => {
 
   return (
     <div className="grid grid-cols-1 lg:grid-cols-4 md:gap-4 mt-[10vh] mb-[2vh] max-w-[90%] mx-auto font-serif">
-      <div className="col-span-1 rounded-lg shadow-[0_0_15px_-7px] shadow-black">
-        <div className="rounded-lg flex flex-col justify-center items-center py-4 mb-4">
-          <div className="text-gray-900 text-xl md:text-2xl font-bold w-1/2 flex flex-row justify-between items-baseh1ne mx-auto">
-            <p>Settings</p>
-            <TbSettingsStar size="30px" />
-          </div>
-          <div className="flex flex-col">
-            <button
-              onClick={handleSearchToggle}
-              className="bg-white w-[200px] mt-8 font-semibold mx-auto md:mx-0 py-3 border-8 border-[#6d97e4] text-[#6d97e4] hover:text-[#385180] hover:border-[#385180] ease-in-out duration-300"
-            >
-              {exactTitleSearch ? 'Keyword Search' : 'Exact Title Search'}
-            </button>
+      <div className="rounded-lg shadow-[0_0_15px_-7px] shadow-black grid-rows-1">
+        <div className="text-gray-900 text-xl md:text-2xl font-bold flex flex-row justify-between items-baseline p-4 w-full">
+          <p>Settings</p>
+          <TbSettingsStar className='mt-3' size="30px" />
+        </div>
+        <div className="flex p-4">
+          <p className="text-gray-900 text-md md:text-lg font-thin mr-3">Exact Title Search:</p>
+          <div className="mt-1">
+            <SearchTypeToggle onClick={handleSearchToggle}/>
           </div>
         </div>
       </div>
-      <div className="col-span-3 py-6 lg:py-0">
+      <div className="col-span-3 py -6 lg:py-0">
         <div className="flex gap-4 mb-4">
           <SearchBar onSearch={handleSearch} />
-          <Link to="/movies/bookmarks" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#6e90cf] items-center justify-center h-20 rounded-xl border-4 border-gray-900 hover:border-[#6d97e4] ease-in-out duration-300">
+          <Link to="/movies/watched" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#28cc31] items-center justify-center h-20 rounded-xl border-4 border-gray-900 hover:border-[#28cc31] ease-in-out duration-300">
+              <div>
+                <ImCheckmark style={{ fontSize: '24px' }} />
+              </div>
+          </Link>
+          <Link to="/movies/bookmarks" className="flex w-[20%] md:w-[10%] bg-gray-900 text-[#6e90cf] items-center justify-center h-20 rounded-xl border-4 border-gray-900 hover:border-[#6e90cf] ease-in-out duration-300">
               <div>
                 <FaBookmark style={{ fontSize: '24px' }} />
               </div>
           </Link>
-          
-          
         </div>
         <div className="flex flex-col">
           {movieData && movieData.results ? (
@@ -100,9 +102,16 @@ const Display = () => {
                     Visit "{movie.titleText.text}" on IMDb
                   </a>
                 </div>
-                <div className="text-[#6e90cf] items-baseline">
-                  <BookmarkButton title={movie.id} />
+                <div className="flex justify-evenly">
+                 
+                    <WatchedCheckButton title={movie.id} />
+               
+                  
+                    <BookmarkButton title={movie.id} />
+     
+
                 </div>
+                
               </div>
             ))
           ) : (
